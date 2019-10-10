@@ -1,0 +1,38 @@
+{
+	"name": "stock-price-checker",
+  "author": "Rakib",
+	"version": "0.0.1",
+	"description": "A project for freeCodeCamp's Information Security and Quality Assurance certification",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"dependencies": {
+		"express": "^4.14.0",
+		"body-parser": "^1.18.3",
+    "helmet": "^3.16.0",
+    "request": "^2.88.0",
+    "jquery": "^3.4.0",
+		"mongodb": "^3.2.3",
+    "chai": "^4.2.0",
+		"chai-http": "^4.2.1",
+		"mocha": "^3.2.0",
+    "cors": "^2.8.5"
+	},
+	"engines": {
+		"node": "10.15.3"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://hyperdev.com/#!/project/welcome-project"
+	},
+	"keywords": [
+		"node",
+		"express",
+    "freecodecamp",
+    "freeCodeCamp",
+    "FCC",
+    "Rakib"
+	],
+	"license": "MIT"
+}

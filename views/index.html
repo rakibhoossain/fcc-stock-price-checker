@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Stock Price Checker for freeCodeCamp - by Rakib Hossain</title>
+	<meta name="description" content="A project for freeCodeCamp's Information Security and Quality Assurance certification">
+	<link id="favicon" rel="icon" type="image/x-icon" href="https://cdn.glitch.com/f7bf8add-eed7-41d0-946a-79997c9cf6e1%2Ffavicon.jpg?1555671297114">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/public/style.css">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
+	
+	<!--
+  We'll be using jquery to handle the form submissions, so let's make sure that the we have jQuery available on this page. We can use the SRI Hash Generator
+  (https://www.srihash.org/) to generate the integrity hash for our given version of jQuery (which can be found at https://code.jquery.com/ ):
+  -->
+  <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+          integrity="sha384-JUMjoW8OzDJw4oFpWIB2Bu/c6768ObEthBMVSiIx4ruBIEdyNSUQAjJNFqT5pnJ6"
+          crossorigin="anonymous">
+  </script>
+
+</head>
+
+
+
+<body>
+	<div class="container">
+
+		<header>
+			<h1>Stock Price Checker</h1>
+			<h2>(a project for freeCodeCamp's Information Security and Quality Assurance certification)</h2>
+		</header>
+    
+
+    <section id="testui">
+			
+			<h3>Front-End</h3>
+      
+      <div id="forms">
+      
+        <form>
+          <h3>Get single price and total likes</h3>
+          <label for="stockname">Stock name:</label>
+          <input type="text" name="ticker" id="stockname" placeholder="Stock ticker symbol (e.g. GOOG)" required>
+          <fieldset>
+            <label for="likeone">Like this stock?</label>
+            <input type="checkbox" name="like" id="likeone" value="true">
+          </fieldset>
+          <input type="submit" value="Get Stock Info!">
+          <code>GET /api/stock-prices</code>
+        </form>
+
+
+        <form>
+          <h3>Compare and get relative likes</h3>
+          <label for="stock1">First stock to compare:</label>
+          <input type="text" name="ticker" id="stock1" placeholder="First stock ticker symbol (e.g. GOOG)" required>
+          <label for="stock2">Second stock to compare:</label>
+          <input type="text" name="ticker" id="stock2" placeholder="Second stock ticker symbol (e.g. MSFT)" required>
+          <fieldset>
+            <label for="likeboth">Like both stocks?</label>
+            <input type="checkbox" name="like" id="likeboth" value="true">
+          </fieldset>
+          <input type="submit" value="Compare Stocks!">
+          <code>GET /api/stock-prices</code>
+        </form>
+      
+      </div>
+
+			<pre id="jsonResult">(Your results will appear here.)</pre>
+			
+		</section>
+    
+    
+    
+		<section>
+			<h3>User Stories</h3>
+			<ol>
+				<li>Set the content security policies to only allow loading of scripts and css from your server.</li>
+				<li>I can <b>GET</b> <code>/api/stock-prices</code> with form data containing a Nasdaq <i>stock</i> ticker and recieve back an object <i>stockData</i>.</li>
+				<li>In <i>stockData</i>, I can see the <i>stock</i>(string, the ticker), <i>price</i>(decimal in string format), and <i>likes</i>(int).</li>
+        <li>I can also pass along field <i>like</i> as <b>true</b>(boolean) to have my like added to the stock(s). Only 1 like per ip should be accepted. <i>[N.B. This has been
+          understood to mean one like per IP address per stock.]</i></li>
+				<li>If I pass along 2 stocks, the return object will be an array with both stock's info but instead of <i>likes</i>, it will display <i>rel_likes</i>(the difference 
+          between the likes on both) on both.</li>
+				<li>A good way to receive current price is the following external API(replacing 'GOOG' with your stock): <code>https://finance.google.com/finance/info?q=NASDAQ%3aGOOG
+          </code> <i>[N.B. Google Finance's API has not been accessible for some time. For this project, <code>https://www.alphavantage.co</code> was used instead.]</i></li>
+				<li>All 5 functional tests are complete and passing.</li>
+			</ol>
+      
+    </section>
+			
+			
+    <section>
+			<h3>Example usage</h3>
+			<code>/api/stock-prices?ticker=goog</code><br>
+			<code>/api/stock-prices?ticker=goog&amp;like=true</code><br>
+			<code>/api/stock-prices?ticker=goog&amp;ticker=msft</code><br>
+			<code>/api/stock-prices?ticker=goog&amp;ticker=msft&amp;like=true</code><br>
+			
+    </section>
+    
+    
+    <section>			
+			<h3>Example return:</h3>
+      <p>
+        A GET request to the API for one stock ticker symbol returns a "stockData" JSON object similar to this one:
+      </p>
+			<pre><code>{
+    stockData: {
+      stock: "GOOG",
+      price: "786.90",
+      likes: 1
+    }
+  }</code></pre>
+      
+      <p>
+        A GET request to the API to compare two ticker symbols returns a "stockData" JSON object containing an array within which are two objects, such as in this example:
+      </p>
+      
+			<pre><code>{
+    stockData: [
+      {
+        stock: "MSFT", 
+        price: "62.30",
+        rel_likes: -1
+      },
+      {
+        stock: "GOOG",
+        price: "786.90",
+        rel_likes: 1
+      }
+    ]
+  }</code></pre>
+			
+		</section>
+
+		
+		
+	</div> <!-- END of DIV #container -->
+	
+	
+	
+	<footer>
+		designed and coded by <a href="https://github.com/rakibhoossain" target="_blank">Rakib Hossain</a> for freeCodeCamp's 
+		<a href="https://learn.freecodecamp.org/information-security-and-quality-assurance/information-security-and-quality-assurance-projects/stock-price-checker/" 
+		target="_blank" title="Visit the project page">Information Security and Quality Assurance - Stock Price Checker Project</a> 
+		and built upon the <a href="https://github.com/freeCodeCamp/boilerplate-project-stockchecker/" target="_blank" title="Project boilerplate on GitHub">
+		project-specific boilerplate code</a> using JavaScript, 
+		<a href="https://api.jquery.com/" title="Learn more about jQuery">jQuery</a> and AJAX, 
+		<a href="https://nodejs.org/" title="Learn more about Node.js">Node.js</a>, 
+		<a href="https://expressjs.com/" target="_blank" title="Learn more about Express.js">Express.js</a>,
+		<a href="https://www.mongodb.com//" target="_blank" title="Learn more about MongoDB">MongoDB</a>, the
+    <a href="https://github.com/request/request#readme" target="_blank" title="Learn more about the request module">request</a> HTTP request client package, 
+    <a href="https://mochajs.org/" target="_blank" title="Learn more about Mocha.js">Mocha.js</a> and 
+		<a href="https://www.chaijs.com/" target="_blank" title="Learn more about Chai.js">Chai.js</a> for testing, 
+		<a href="https://helmetjs.github.io/" target="_blank" title="Learn more about Helmet.js">Helmet.js</a>,
+		and a pinch of CSS.
+	</footer>
+	
+	
+	
+	<script>
+        // By defining the script at the end of our source code, it'll in essence fire up when the page is loaded.
+        $(function() {
+          // We'll have a listener ready to act when any form on the page is submitted, which in our case is when either of our two forms is submitted:          
+          $("form").submit(function(e) {
+            // We'll prevent the actual execution of the form submission...
+            e.preventDefault();
+            
+            // ... and then carry out our ajax request:
+            $.ajax({
+            	url: "/api/stock-prices",
+            	type: "get",
+            	data: $(this).serialize(),
+            	success: function(data) {
+                // Upon success, we'll use JSON.stringify's options to indent ("    ") all of our lines properly, and remove all the quotation marks around our key names:
+                let result = JSON.stringify(data, null, "    ").replace("\"stockData\"", "stockData").replace("\"stock\"", "stock").replace("\"price\"", "price").replace("\"likes\"", "likes").replace("\"rel_likes\"", "rel_likes");
+            		// With our response all tidied up, we'll then hide the jsonResult DIV... populate it with our new content... and slide the div back down into view
+                $("#jsonResult").hide().text(result).slideDown();
+            	}
+            });
+            
+          });  // END of .submit()          
+          
+        });  //END of script's main function
+    </script>
+    
+    
+
+</body>
+</html>

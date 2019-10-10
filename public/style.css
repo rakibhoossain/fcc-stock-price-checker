@@ -1,0 +1,197 @@
+body {
+  margin: 0;
+  
+  background: linear-gradient(30deg, #605094 40%, #de7783);
+  background-attachment: fixed;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;         /* combined with display=flex and footer's margin-top=auto in order to keep footer pinned to bottom of page at all times. */
+  
+  line-height: 1.5em;
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  background: white;
+  border-radius: 0.3em;
+  box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.5);
+  
+  max-width: 700px;
+  box-sizing: border-box;
+  margin: 2em 0.5em 3em 0.5em;
+  padding: 2em 2em 0 2em;  
+}
+
+.fourohfour {
+  text-align: center;
+}
+
+section {
+  margin-bottom: 3em;
+}
+
+
+/*
+Headers:
+*/
+h1 {
+  color: #AFAF39;
+  text-align: center;
+  font-size: 3em;
+  line-height: normal;
+  margin-bottom: 0;
+}
+
+.fourohfour h1 {
+  font-size: 6em;
+  margin: 0.5em 0;
+}
+
+h2 {
+  color: #888;
+  text-align: center;
+  font-size: 0.8em;
+  line-height: normal;
+  margin: 0 0 5em 0;
+}
+
+h3 {
+  color: #AFAF39;
+}
+
+form h3 {
+  text-align: center;
+  color: #592B75;
+  margin: 0 0 1em 0;
+}
+/*
+END of Headers
+*/
+
+
+
+
+/*
+Forms:
+*/
+#forms {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+@media (max-width: 710px) {
+  #forms {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+form {
+  background: linear-gradient(20deg, #BFA5CE 40%, #A7B3CE);
+  color: white;
+  border-radius: 0.3em;
+  
+  margin-bottom: 1em;
+  padding: 1em;
+  flex-basis: calc(50% - 2.5em);
+  
+  display: flex;
+  flex-direction: column;
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+input {
+  border: none;
+  border-radius: 0.3em;
+  margin-bottom: 0.5em;
+  padding: 0.5em;
+  font-size: 0.9em;
+  font-family: inherit;
+  box-shadow: inset 0 0 0.5em rgba(0, 0, 0, 0.2);
+}
+
+/* To place a "required asterisk" on the right side of the input fields that are marked as required: */
+input[required] {
+  background-image: url("https://cdn.glitch.com/f7bf8add-eed7-41d0-946a-79997c9cf6e1%2Frequired-field-asterisk.png?1555671297014");
+  background-repeat: no-repeat;
+  background-position: 98% 0.4em;
+  background-size: 0.5em; 
+}
+
+input[type=submit] {
+  margin: 2em 0 0 0;
+  
+  border: 2px solid #D7D767;
+  border-radius: 0.3em;
+  background: #9570AA;
+  color: #D7D767;
+  font-weight: 900;
+  box-shadow: none;    
+}
+
+input[type=submit]:hover {
+  box-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.3);
+  color: #9570AA;
+  background: #D7D767;
+}
+
+input[type=submit]:active {
+  box-shadow: none;
+}
+
+form code {
+  background: none;
+  color: rgba(255, 255, 255, 0.7);;
+  font-size: 0.8em;
+  padding-top: 0;
+  align-self: flex-end;
+}
+/*
+END of Forms
+*/
+
+
+
+code {
+  background: #edeff4;
+  padding: 0.2em 0.5em;
+  border-radius: 0.3em;
+}
+
+pre {
+  padding: 1em;
+  border-left: 0.3em solid #AFAF39;
+  border-radius: 0.3em;
+  background: #edeff4;
+  white-space: pre-wrap;  /* to make sure that our responses stay neatly within the code box on screen, for example when returning long single-line error messages */
+}
+
+
+footer {
+  margin-top: auto;      /* combined with body's display=flex and height=100vh in order to keep footer pinned to bottom of page at all times. */
+  background: #222;
+  box-sizing: border-box;
+  width: 100vw;
+  max-width: 100%;
+  padding: 0.3em 1em;
+  font-size: 0.8em;
+  color: #ccc;
+  text-align: center;
+}
+
+footer a {
+  color: #eee;
+}
+
+footer a:hover {
+  color: #c7c1dd;
+}
